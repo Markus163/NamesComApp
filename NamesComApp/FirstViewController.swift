@@ -28,6 +28,12 @@ class FirstViewController: UIViewController {
     @IBAction func resultButtonTapped() {
         performSegue(withIdentifier: "goToResult", sender: nil)
     }
+    
+    @IBAction func unwindSegueToFirstVC(segue: UIStoryboardSegue) {
+        guard segue.identifier == "unwindSegue" else { return }
+        yourNameTF.text = ""
+        partnersNameTF.text = ""
+    }
 }
 
 //Скрыть клавиатуру по нажатию на экран

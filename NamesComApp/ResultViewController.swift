@@ -14,6 +14,9 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
     
+    @IBAction func backButtonTapped() {
+        performSegue(withIdentifier: "unwindSegue", sender: nil)
+    }
     var firstName: String!
     var secondName: String!
     private var resultValue = 0
