@@ -13,10 +13,6 @@ class FirstViewController: UIViewController {
     @IBOutlet weak var yourNameTF: UITextField!
     
     @IBOutlet weak var partnersNameTF: UITextField!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -26,6 +22,13 @@ class FirstViewController: UIViewController {
     }
     
     @IBAction func resultButtonTapped() {
+        guard let firstName = yourNameTF.text, let secondName = partnersNameTF.text else { return }
+        if firstName.isEmpty || secondName.isEmpty {
+            showAlert(title: "Names are missing",
+                      message: "Please enter both names 😊"
+            )
+            return
+        }
         performSegue(withIdentifier: "goToResult", sender: nil)
     }
     
@@ -33,6 +36,15 @@ class FirstViewController: UIViewController {
         guard segue.identifier == "unwindSegue" else { return }
         yourNameTF.text = ""
         partnersNameTF.text = ""
+    }
+}
+
+extension FirstViewController {
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(okAction)
+        present(alert, animated: true)
     }
 }
 
