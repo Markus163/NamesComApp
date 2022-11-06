@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--First View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="NamesComApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="FirstViewController" customModule="NamesComApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,11 +21,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="lUv-99-IYu">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="lUv-99-IYu">
                                 <rect key="frame" x="20" y="248.5" width="374" height="108"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Drw-jQ-GjS">
-                                        <rect key="frame" x="0.0" y="0.0" width="177" height="108"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="182" height="108"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PcE-FK-Hiw">
                                                 <rect key="frame" x="0.0" y="0.0" width="96.5" height="34"/>
@@ -42,15 +42,15 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="BhI-uv-JeV">
-                                        <rect key="frame" x="197" y="0.0" width="177" height="108"/>
+                                        <rect key="frame" x="192" y="0.0" width="182" height="108"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dlT-LX-Qts">
-                                                <rect key="frame" x="0.0" y="0.0" width="177" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="182" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N4o-EX-fhg">
-                                                <rect key="frame" x="0.0" y="74" width="177" height="34"/>
+                                                <rect key="frame" x="0.0" y="74" width="182" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -75,6 +75,9 @@
                                         <integer key="value" value="12"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="resultButtonTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="Cry-zc-qXh"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -89,15 +92,20 @@
                             <constraint firstItem="lUv-99-IYu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ufe-EV-D4q"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="partnersNameTF" destination="N4o-EX-fhg" id="z6B-Pv-3BL"/>
+                        <outlet property="yourNameTF" destination="dlT-LX-Qts" id="d3l-w1-rUP"/>
+                        <segue destination="bwP-BD-yXP" kind="show" identifier="goToResult" id="ibq-Cm-ohG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="113.84615384615384" y="-28.436018957345969"/>
         </scene>
-        <!--View Controller-->
+        <!--Result View Controller-->
         <scene sceneID="Fu4-pr-kAF">
             <objects>
-                <viewController id="bwP-BD-yXP" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="bwP-BD-yXP" customClass="ResultViewController" customModule="NamesComApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2KA-M0-5Bm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -163,6 +171,12 @@
                             <constraint firstItem="roe-8h-j4s" firstAttribute="top" secondItem="D2u-oG-aNX" secondAttribute="bottom" constant="80" id="h3g-Az-AgQ"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="nsP-vC-LD4"/>
+                    <connections>
+                        <outlet property="namesLabel" destination="D2u-oG-aNX" id="15z-wb-WVn"/>
+                        <outlet property="progressView" destination="roe-8h-j4s" id="48d-DK-uEm"/>
+                        <outlet property="resultLabel" destination="Yeg-K9-yFz" id="Ypg-gX-XSt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jbq-Y1-bLN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
